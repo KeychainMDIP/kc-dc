@@ -10,6 +10,10 @@ $ docker compose version
 Docker Compose version v2.20.2
 ```
 
+## Limitations
+
+* `kc` commands that need a file won't work (yet, TBD)
+
 ## Getting Started
 
 ```

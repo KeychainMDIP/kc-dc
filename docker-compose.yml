@@ -1,4 +1,10 @@
 version: "3"
 services:
-  keychain:
-    image: macterra/keychain
+
+  gatekeeper:
+    image: macterra/gatekeeper
+
+  hyperswarm:
+    image: macterra/hyperswarm-monitor
+    environment:
+      - GATEKEEPER_URL=http://gatekeeper:3000

@@ -12,7 +12,7 @@ Docker Compose version v2.20.2
 
 ## Limitations
 
-* `kc` commands that need a file won't work (yet, TBD)
+* file parameters must be in the data folder, e.g. `./kc create-credential data/schema/email.json`
 
 ## Getting Started
 

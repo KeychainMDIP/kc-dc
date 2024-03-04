@@ -3,8 +3,12 @@ services:
 
   gatekeeper:
     image: macterra/gatekeeper
+    volumes:
+      - ./data:/app/data
 
   hyperswarm:
     image: macterra/hyperswarm-monitor
     environment:
       - GATEKEEPER_URL=http://gatekeeper:3000
+    volumes:
+      - ./data:/app/data

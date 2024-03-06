@@ -19,6 +19,7 @@ Docker Compose version v2.20.2
 ```
 $ git clone https://github.com/KeychainMDIP/keychain-docker
 $ cd keychain-docker
+$ docker compose pull
 $ docker compose up -d
 
 $ ./kc

@@ -32,7 +32,8 @@ Options:
   -h, --help                                  display help for command
 
 Commands:
-  new-wallet <recovery-phrase>                Create new wallet from a recovery phrase
+  create-wallet                               Create new wallet (or show existing wallet)
+  import-wallet <recovery-phrase>             Create new wallet from a recovery phrase
   show-wallet                                 Show wallet
   show-mnemonic                               Show recovery phrase for wallet
   backup-wallet                               Backup wallet to encrypted DID
@@ -53,9 +54,8 @@ Commands:
   sign-file <file>                            Sign a JSON file
   verify-file <file>                          Verify the signature in a JSON file
   create-credential <file> [name]             Create credential from schema file
-  create-challenge <file> [name]              Create challenge from a file
+  create-challenge [file] [name]              Create challenge (optionally from a file)
   create-challenge-cc <did> [name]            Create challenge from a credential DID
-  issue-challenge <challenge> <user>          Issue a challenge to a user
   bind-credential <file> <did>                Create bound credential for a user
   attest-credential <file> [registry] [name]  Sign and encrypt a bound credential file
   revoke-credential <did>                     Revokes a verifiable credential

@@ -5,10 +5,13 @@ services:
     image: macterra/gatekeeper
     volumes:
       - ./data:/app/data
+    ports:
+      - "4224:4224"
 
   hyperswarm:
     image: macterra/hyperswarm-mediator
     environment:
-      - GATEKEEPER_URL=http://gatekeeper:3000
+      - KC_GATEKEEPER_URL=http://gatekeeper
+      - KC_GATEKEEPER_PORT=4224
     volumes:
       - ./data:/app/data

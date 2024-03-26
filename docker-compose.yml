@@ -15,3 +15,5 @@ services:
       - KC_GATEKEEPER_PORT=4224
     volumes:
       - ./data:/app/data
+    depends_on:
+      - gatekeeper

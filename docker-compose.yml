@@ -2,14 +2,14 @@ version: "3"
 services:
 
   gatekeeper:
-    image: macterra/gatekeeper
+    image: ghcr.io/keychainmdip/gatekeeper:release
     volumes:
       - ./data:/app/data
     ports:
       - "4224:4224"
 
   hyperswarm:
-    image: macterra/hyperswarm-mediator
+    image: ghcr.io/keychainmdip/hyperswarm-mediator:release
     environment:
       - KC_GATEKEEPER_URL=http://gatekeeper
       - KC_GATEKEEPER_PORT=4224

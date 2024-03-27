@@ -1,5 +1,4 @@
-# keychain-docker
-
+# kcdc: keychain with docker compose
 
 ## Prerequisites
 

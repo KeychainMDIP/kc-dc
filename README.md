@@ -16,8 +16,8 @@ Docker Compose version v2.20.2
 ## Getting Started
 
 ```
-$ git clone https://github.com/KeychainMDIP/keychain-docker
-$ cd keychain-docker
+$ git clone https://github.com/KeychainMDIP/kcdc
+$ cd kcdc
 $ docker compose pull
 $ docker compose up -d
 
@@ -71,3 +71,5 @@ Commands:
   verify-file <file>                          Verify the signature in a JSON file
   verify-response <did>                       Decrypt and validate a Verifiable Presentation
 ```
+
+Details on each command can be found in the [CLI User Manual](https://github.com/KeychainMDIP/kc/blob/main/doc/CLI-user-manual/README.md)

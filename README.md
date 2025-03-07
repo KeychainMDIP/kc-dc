@@ -1,4 +1,4 @@
-# kcdc: keychain with docker compose
+# kc-dc: keychain with docker compose
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ $ ./start-node
 
 In a separate terminal:
 
-$ ./kc-cli
+$ ./kc
 Usage: keychain-cli [options] [command]
 
 Keychain CLI tool

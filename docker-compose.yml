@@ -10,16 +10,17 @@ services:
     image: keychainmdip/gatekeeper:release
     environment:
       - KC_GATEKEEPER_PORT=4224
+      - KC_GATEKEEPER_DID_PREFIX=${KC_GATEKEEPER_DID_PREFIX}
+      - KC_GATEKEEPER_REGISTRIES=${KC_GATEKEEPER_REGISTRIES}
+      - KC_GATEKEEPER_GC_INTERVAL=${KC_GATEKEEPER_GC_INTERVAL}
+      - KC_GATEKEEPER_STATUS_INTERVAL=${KC_GATEKEEPER_STATUS_INTERVAL}
       - KC_GATEKEEPER_DB=redis
-      - KC_GATEKEEPER_DID_PREFIX=did:mdip
-      - KC_GATEKEEPER_GC_INTERVAL=240
-      - KC_GATEKEEPER_STATUS_INTERVAL=1
       - KC_REDIS_URL=redis://redis:6379
     volumes:
       - ./data:/app/gatekeeper/data
     user: "${KC_UID}:${KC_GID}"
     ports:
-      - 4224:4224
+      - ${KC_GATEKEEPER_PORT}:4224
     depends_on:
       - redis
 
@@ -28,15 +29,16 @@ services:
     environment:
       - KC_KEYMASTER_PORT=4226
       - KC_GATEKEEPER_URL=http://gatekeeper:4224
-      - KC_KEYMASTER_DB=redis
       - KC_ENCRYPTED_PASSPHRASE=${KC_ENCRYPTED_PASSPHRASE}
-      - KC_WALLET_CACHE=true
+      - KC_DEFAULT_REGISTRY=${KC_DEFAULT_REGISTRY}
+      - KC_WALLET_CACHE=${KC_WALLET_CACHE}
+      - KC_KEYMASTER_DB=redis
       - KC_REDIS_URL=redis://redis:6379
     volumes:
       - ./data:/app/keymaster/data
     user: "${KC_UID}:${KC_GID}"
     ports:
-      - 4226:4226
+      - ${KC_KEYMASTER_PORT}:4226
     depends_on:
       - gatekeeper
 
@@ -45,8 +47,8 @@ services:
     environment:
       - KC_GATEKEEPER_URL=http://gatekeeper:4224
       - KC_NODE_NAME=${KC_NODE_NAME}
-      - KC_MDIP_PROTOCOL=/MDIP/v1.0-public
-      - KC_HYPR_EXPORT_INTERVAL=2
+      - KC_MDIP_PROTOCOL=${KC_MDIP_PROTOCOL}
+      - KC_HYPR_EXPORT_INTERVAL=${KC_HYPR_EXPORT_INTERVAL}
     volumes:
       - ./data:/app/hyperswarm/data
     user: "${KC_UID}:${KC_GID}"
@@ -80,13 +82,13 @@ services:
       - KC_SAT_START_BLOCK=0
       - KC_SAT_HOST=tftc-node
       - KC_SAT_PORT=19337
-      - KC_SAT_WALLET=mdip
-      - KC_SAT_IMPORT_INTERVAL=1
-      - KC_SAT_EXPORT_INTERVAL=0
-      - KC_SAT_FEE_MIN=0
-      - KC_SAT_FEE_MAX=0
-      - KC_SAT_FEE_INC=0
-      - KC_SAT_REIMPORT=true
+      - KC_SAT_WALLET=${KC_TFTC_WALLET}
+      - KC_SAT_IMPORT_INTERVAL=${KC_TFTC_IMPORT_INTERVAL}
+      - KC_SAT_EXPORT_INTERVAL=${KC_TFTC_EXPORT_INTERVAL}
+      - KC_SAT_FEE_MIN=${KC_TFTC_FEE_MIN}
+      - KC_SAT_FEE_MAX=${KC_TFTC_FEE_MAX}
+      - KC_SAT_FEE_INC=${KC_TFTC_FEE_INC}
+      - KC_SAT_REIMPORT=${KC_TFTC_REIMPORT}
       - KC_SAT_DB=redis
       - KC_REDIS_URL=redis://redis:6379
     volumes:
@@ -115,14 +117,16 @@ services:
       - KC_SAT_NETWORK=testnet
       - KC_SAT_HOST=tbtc-node
       - KC_SAT_PORT=48332
-      - KC_SAT_START_BLOCK=38000
-      - KC_SAT_WALLET=mdip
-      - KC_SAT_IMPORT_INTERVAL=1
-      - KC_SAT_EXPORT_INTERVAL=0
-      - KC_SAT_FEE_MIN=0
-      - KC_SAT_FEE_MAX=0
-      - KC_SAT_FEE_INC=0
-      - KC_SAT_REIMPORT=true
+      - KC_SAT_START_BLOCK=${KC_TBTC_START_BLOCK}
+      - KC_SAT_USER=${KC_TBTC_USER}
+      - KC_SAT_PASS=${KC_TBTC_PASS}
+      - KC_SAT_WALLET=${KC_TBTC_WALLET}
+      - KC_SAT_IMPORT_INTERVAL=${KC_TBTC_IMPORT_INTERVAL}
+      - KC_SAT_EXPORT_INTERVAL=${KC_TBTC_EXPORT_INTERVAL}
+      - KC_SAT_FEE_MIN=${KC_TBTC_FEE_MIN}
+      - KC_SAT_FEE_MAX=${KC_TBTC_FEE_MAX}
+      - KC_SAT_FEE_INC=${KC_TBTC_FEE_INC}
+      - KC_SAT_REIMPORT=${KC_TBTC_REIMPORT}
       - KC_SAT_DB=redis
       - KC_REDIS_URL=redis://redis:6379
     volumes:
@@ -137,9 +141,9 @@ services:
     image: keychainmdip/ipfs-mediator:release
     environment:
       - KC_GATEKEEPER_URL=http://gatekeeper:4224
-      - KC_IPFS_INTERVAL=60
-      - KC_IPFS_BATCH_SIZE=100
-      - KC_IPFS_CONCURRENCY=10
+      - KC_IPFS_INTERVAL=${KC_IPFS_INTERVAL}
+      - KC_IPFS_BATCH_SIZE=${KC_IPFS_BATCH_SIZE}
+      - KC_IPFS_CONCURRENCY=${KC_IPFS_CONCURRENCY}
     volumes:
       - ./data:/app/ipfs/data
     user: "${KC_UID}:${KC_GID}"

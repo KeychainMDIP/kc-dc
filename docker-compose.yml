@@ -65,7 +65,7 @@ services:
       - keymaster
 
   tftc-node:
-    image: keychainmdip/feathercoin:v0.19.1
+    image: keychainmdip/feathercoin:v0.19.2
     volumes:
       - ./data/tftc:/root/.feathercoin
 
